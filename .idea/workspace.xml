@@ -147,7 +147,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="12" column="0" selection-start="181" selection-end="181" vertical-scroll-proportion="0.26442307">
               <folding />
             </state>
           </provider>
@@ -163,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Vputi/UserBundle/Form/Type/UserProfileFormType.php" />
         <option value="$PROJECT_DIR$/src/Vputi/UserBundle/Form/Type/ProfileFormType.php" />
         <option value="$PROJECT_DIR$/src/Vputi/UserBundle/Form/Type/DriverFormType.php" />
         <option value="$PROJECT_DIR$/src/Vputi/UserBundle/Entity/Profile.php" />
@@ -179,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/Vputi/EventBundle/DependencyInjection/EventExtension.php" />
         <option value="$PROJECT_DIR$/src/Vputi/EventBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Vputi/EventBundle/Entity/Event.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -468,7 +468,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="12" column="0" selection-start="181" selection-end="181" vertical-scroll-proportion="0.26442307">
           <folding />
         </state>
       </provider>

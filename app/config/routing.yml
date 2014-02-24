@@ -1,0 +1,16 @@
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
+home:
+    path: /{_locale}
+    defaults: { _controller: UserBundle:Default:index, _locale: ru}
+    requirements:
+        _locale:  en|ru|ua
+
+user:
+    resource:   "@UserBundle/Resources/config/routing.yml"
+    prefix:     /{_locale}/
+    defaults:   { _locale: ru }
+    requirements:
+        _locale:  en|ru|ua

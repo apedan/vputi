@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="vputi_user.registration.form.type" class="Vputi\UserBundle\Form\Type\RegistrationFormType">
+            <tag name="form.type" alias="vputi_user_registration" />
+            <argument>%fos_user.model.user.class%</argument>
+        </service>
+
+        <service id="vputi_user.profile.form.type" class="Vputi\TaskBundle\Form\Type\ProfileFormType">
+            <argument>%fos_user.model.user.class%</argument>
+            <tag name="form.type" alias="vputi_user_profile" />
+        </service>
+
+        <service id="vputi_user.custom_profile.form.type" class="Vputi\UserBundle\Form\Type\CustomProfileFormType">
+            <tag name="form.type" alias="vputi_custom_profile" />
+        </service>
+
+        <service id="vputi_user.driver.form.type" class="Vputi\UserBundle\Form\Type\DriverFormType">
+            <tag name="form.type" alias="vputi_driver" />
+        </service>
+
+    </services>
+
+</container>

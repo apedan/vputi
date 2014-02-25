@@ -66,7 +66,8 @@ class EventController extends Controller
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));
-
+        $form->add('title');
+        $form->add('locale');
         $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
@@ -145,7 +146,8 @@ class EventController extends Controller
             'action' => $this->generateUrl('event_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-
+        $form->add('title');
+        $form->add('locale');
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;

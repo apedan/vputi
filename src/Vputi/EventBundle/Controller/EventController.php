@@ -6,7 +6,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Vputi\EventBundle\Entity\Event;
-use Vputi\EventBundle\Form\EventType;
+
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
  * Event controller.
@@ -35,20 +41,38 @@ class EventController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Event();
-        $form = $this->createCreateForm($entity);
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
+        $event = new Event();
+        $form = $this->createCreateForm($event);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($event);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
+            // creating the ACL
+            $aclProvider = $this->get('security.acl.provider');
+            $objectIdentity = ObjectIdentity::fromDomainObject($event);
+            $acl = $aclProvider->createAcl($objectIdentity);
+
+            // retrieving the security identity of the currently logged-in user
+            $securityContext = $this->get('security.context');
+            $user = $securityContext->getToken()->getUser();
+            $securityIdentity = UserSecurityIdentity::fromAccount($user);
+
+            // grant owner access
+            $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
+            $aclProvider->updateAcl($acl);
+
+            return $this->redirect($this->generateUrl('event_show', array('id' => $event->getId())));
         }
 
         return $this->render('EventBundle:Event:new.html.twig', array(
-            'entity' => $entity,
+            'entity' => $event,
             'form'   => $form->createView(),
         ));
     }
@@ -62,13 +86,10 @@ class EventController extends Controller
     */
     private function createCreateForm(Event $entity)
     {
-        $form = $this->createForm(new EventType(), $entity, array(
+        $form = $this->createForm('vputi_event', $entity, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));
-        $form->add('title');
-        $form->add('locale');
-        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -79,6 +100,10 @@ class EventController extends Controller
      */
     public function newAction()
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
         $entity = new Event();
         $form   = $this->createCreateForm($entity);
 
@@ -117,17 +142,28 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EventBundle:Event')->find($id);
+        $event = $em->getRepository('EventBundle:Event')->find($id);
 
-        if (!$entity) {
+        if (!$event) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $securityContext = $this->get('security.context');
+
+        // check for edit access
+        if (false === $securityContext->isGranted('EDIT', $event)) {
+            throw new AccessDeniedException();
+        }
+
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
+        $editForm = $this->createEditForm($event);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('EventBundle:Event:edit.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $event,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -142,13 +178,10 @@ class EventController extends Controller
     */
     private function createEditForm(Event $entity)
     {
-        $form = $this->createForm(new EventType(), $entity, array(
+        $form = $this->createForm('vputi_event', $entity, array(
             'action' => $this->generateUrl('event_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
-        $form->add('title');
-        $form->add('locale');
-        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -171,8 +204,8 @@ class EventController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $em->persist($entity);
             $em->flush();
-
             return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
         }
 

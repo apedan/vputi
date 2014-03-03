@@ -15,11 +15,21 @@ class EventFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title')
             ->add('startDate')
             ->add('endDate')
             ->add('departure')
             ->add('description')
             ->add('maxCount')
+            ->add('locale', 'choice', array(
+                'choices' => array(
+                    'ru' => 'Russian',
+                    'en' => 'English',
+                    'ua' => 'Ukrainian',
+                ),
+                'required'    => true,
+            ))
+            ->add('submit', 'submit', array('label' => 'Create'))
         ;
     }
     
@@ -38,6 +48,6 @@ class EventFormType extends AbstractType
      */
     public function getName()
     {
-        return 'vputi_eventbundle_event';
+        return 'vputi_event';
     }
 }

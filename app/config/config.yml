@@ -75,6 +75,14 @@ doctrine:
                         alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
                         is_bundle: false
 
+stof_doctrine_extensions:
+    default_locale: en
+    orm:
+        default:
+            timestampable: true
+            sluggable: true
+            translatable: true
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

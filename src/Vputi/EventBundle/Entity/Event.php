@@ -4,6 +4,7 @@ namespace Vputi\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
 
 /**
  * Event
@@ -11,7 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Event
+class Event implements  Translatable
 {
     /**
      * @var integer
@@ -227,6 +228,4 @@ class Event
     {
         return $this->locale;
     }
-
-
 }

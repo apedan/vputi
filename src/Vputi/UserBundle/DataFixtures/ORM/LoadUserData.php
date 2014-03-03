@@ -34,7 +34,7 @@ class LoadUserData implements FixtureInterface, OrderedFixtureInterface, Contain
         $apedan->setEmail('a.pedan@gmail.com');
         $apedan->setPlainPassword('1723104');
         $apedan->setEnabled(true);
-        $apedan->addRole('ROLE_PASSENGER');
+        $apedan->addRole('ROLE_ADMIN');
         $apedan->setPhone('1723104');
 
         $this->userManager->updateUser($apedan);
@@ -54,7 +54,7 @@ class LoadUserData implements FixtureInterface, OrderedFixtureInterface, Contain
         $vasya->setEmail('vasya@gmail.com');
         $vasya->setPlainPassword('1723104');
         $vasya->setEnabled(true);
-        $vasya->addRole('ROLE_DRIVER');
+        $vasya->addRole('ROLE_USER');
         $vasya->setPhone('1723104');
 
         $this->userManager->updateUser($vasya);

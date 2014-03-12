@@ -18,10 +18,14 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+
             new Vputi\UserBundle\UserBundle(),
             new Vputi\EventBundle\EventBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,9 @@
+Vputi\EventBundle\Dto\Event:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        title:
+            expose: true
+        description:
+          expose: true

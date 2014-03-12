@@ -131,7 +131,8 @@ class EventController extends Controller
 
         return $this->render('EventBundle:Event:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**

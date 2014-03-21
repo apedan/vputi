@@ -25,7 +25,7 @@ class AppKernel extends Kernel
 
             new Vputi\UserBundle\UserBundle(),
             new Vputi\EventBundle\EventBundle(),
-
+            new Vputi\MainBundle\MainBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

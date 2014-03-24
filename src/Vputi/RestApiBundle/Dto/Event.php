@@ -1,6 +1,6 @@
 <?php
 
-namespace Vputi\EventBundle\Dto;
+namespace Vputi\RestApiBundle\Dto;
 
 /**
  * Event
@@ -11,4 +11,5 @@ class Event
     public $id;
     public $title;
     public $description;
+    public $startDate;
 }

@@ -1,4 +1,4 @@
-Vputi\EventBundle\Entity\Event:
+Vputi\RestApiBundle\Entity\Event:
     exclusion_policy: ALL
     properties:
         id:

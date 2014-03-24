@@ -152,8 +152,5 @@ jms_serializer:
     metadata:
         directories:
             Events:
-                namespace_prefix: "Vputi\EventBundle"
-                path: "%kernel.root_dir%/serializer/EventBundle"
-            DtoEvents:
-                namespace_prefix: "Vputi\EventBundle"
-                path: "%kernel.root_dir%/../src/Vputi/EventBundle/Dto/serializer"
+                namespace_prefix: "Vputi\RestApiBundle"
+                path: "%kernel.root_dir%/../src/Vputi/RestApiBundle/Dto/serializer"

@@ -1,4 +1,0 @@
-events:
-    prefix:  event
-    type: rest
-    resource: Vputi\RestApiBundle\Controller\EventController

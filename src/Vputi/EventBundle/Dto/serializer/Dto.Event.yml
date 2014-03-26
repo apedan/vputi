@@ -1,4 +1,4 @@
-Vputi\RestApiBundle\Entity\Event:
+Vputi\EventBundle\Dto\Event:
     exclusion_policy: ALL
     properties:
         id:
@@ -6,4 +6,6 @@ Vputi\RestApiBundle\Entity\Event:
         title:
             expose: true
         description:
-          expose: true
+            expose: true
+        startDate:
+            expose: true

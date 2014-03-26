@@ -1,6 +1,6 @@
 <?php
 
-namespace Vputi\RestApiBundle\Dto;
+namespace Vputi\EventBundle\Dto;
 
 /**
  * Event

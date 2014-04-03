@@ -10,7 +10,7 @@ use Gedmo\Translatable\Translatable;
  * Event
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Vputi\EventBundle\Entity\EventRepository")
  */
 class Event implements  Translatable
 {

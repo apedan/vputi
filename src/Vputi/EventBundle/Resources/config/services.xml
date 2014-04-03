@@ -10,6 +10,14 @@
             <tag name="form.type" alias="vputi_event" />
         </service>
 
+        <service id="event.repository" class="Vputi\EventBundle\Entity\EventRepository" factory-service="doctrine.orm.entity_manager" factory-method="getRepository">
+            <argument>Vputi\EventBundle\Entity\Event</argument>
+        </service>
+
+        <service id="eventService" class="Vputi\EventBundle\EventService">
+            <argument type="service" id="event.repository"/>
+        </service>
+
     </services>
 
 </container>

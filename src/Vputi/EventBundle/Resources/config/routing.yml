@@ -2,8 +2,8 @@ EventBundle_event:
         resource: "@EventBundle/Resources/config/routing/event.yml"
         prefix:   /events
 
-api_events:
-    prefix:  /api/events
+event_bundle_api:
     type: rest
-    resource: Vputi\EventBundle\Controller\ApiController
+    prefix: api/v1
+    resource: "Vputi\EventBundle\Controller\ApiController"
 

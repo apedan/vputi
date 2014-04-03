@@ -39,7 +39,8 @@ class EventFormType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Vputi\EventBundle\Entity\Event'
+            'data_class' => 'Vputi\EventBundle\Entity\Event',
+            'csrf_protection'   => false, //for REST API
         ));
     }
 

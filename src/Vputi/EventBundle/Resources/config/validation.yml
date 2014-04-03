@@ -1,0 +1,8 @@
+Vputi\EventBundle\Entity\Event:
+    getters:
+        title:
+            - NotBlank:
+        description:
+            - NotBlank:
+        maxCount:
+            - NotBlank:

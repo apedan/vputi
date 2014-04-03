@@ -6,6 +6,11 @@ event:
     resource: "@EventBundle/Resources/config/routing.yml"
     prefix:   /
 
+#event_api:
+#    type: rest
+#    prefix: /api
+#    resource: "@EventBundle/Resources/config/routing.yml"
+
 home:
     path: /{_locale}
     defaults: { _controller: UserBundle:Default:index, _locale: ru}

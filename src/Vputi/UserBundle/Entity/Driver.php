@@ -51,6 +51,13 @@ class Driver
     private $profile;
 
     /**
+     * @var Driver
+     *
+     * @ORM\OneToMany(targetEntity="Car", mappedBy="driver")
+     */
+    protected $cars;
+
+    /**
      * Get id
      *
      * @return integer 

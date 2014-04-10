@@ -11,6 +11,7 @@ class RegistrationFormType extends BaseType
         parent::buildForm($builder, $options);
 
         $builder->add('phone');
+        $builder->add('profile', 'vputi_custom_profile');
     }
 
     public function getName()

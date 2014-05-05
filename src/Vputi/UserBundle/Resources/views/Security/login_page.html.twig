@@ -1,0 +1,8 @@
+{% extends "MainBundle::layout.html.twig" %}
+{% block body %}
+
+    <div class="ui form segment {% if error %} {{ 'error' }} {% endif %}">
+        {% include 'UserBundle:Security:login.html.twig' %}
+    </div>
+
+{% endblock body %}

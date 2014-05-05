@@ -287,10 +287,10 @@
 
 {% block form_row %}
 {% spaceless %}
-    <div class="field">
+    <div class="field {% if errors|length > 0 %} {{ 'error' }} {% endif %}">
         <label>{{ form_label(form) }}</label>
-        {{ form_errors(form) }}
         {{ form_widget(form) }}
+        {{ form_errors(form) }}
     </div>
 {% endspaceless %}
 {% endblock form_row %}
@@ -351,11 +351,11 @@
 {% block form_errors %}
 {% spaceless %}
     {% if errors|length > 0 %}
-    <ul>
+    <div class="ui red pointing above ui label">
         {% for error in errors %}
-            <li>{{ error.message }}</li>
+            {{ error.message }}
         {% endfor %}
-    </ul>
+    </div>
     {% endif %}
 {% endspaceless %}
 {% endblock form_errors %}

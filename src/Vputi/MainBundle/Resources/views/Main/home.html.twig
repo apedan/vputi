@@ -1,0 +1,39 @@
+{% extends "MainBundle::layout.html.twig" %}
+{% block body %}
+    <div class="ui two column middle aligned relaxed grid basic segment">
+        <div class="aligned column">
+            <h3 class="ui header purple">
+                <i class="search icon"></i>
+                <div class="content">
+                    Trip search
+                </div>
+            </h3>
+            <div class="ui form segment">
+                {{ render(controller('TripBundle:Trip:search')) }}
+            </div>
+
+            <div class="ui segment">
+                {{ render(controller('TripBundle:Trip:list')) }}
+            </div>
+        </div>
+        <div class="ui vertical divider">
+            <i class="big road icon"></i>
+        </div>
+        <div class="column">
+            <h3 class="ui header purple">
+                <i class="sign in icon"></i>
+                <div class="content">
+                    Login
+                </div>
+            </h3>
+            <div class="ui form segment">
+                {% if not user %}
+                    {{ render(controller('FOSUserBundle:Security:login')) }}
+                {% else %}
+                    {{ render(controller('FOSUserBundle:Profile:show')) }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

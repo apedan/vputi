@@ -1,0 +1,87 @@
+<h1>Trip list</h1>
+
+<table class="ui table segment js-trip-block">
+    <thead>
+        <tr>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Departure time</th>
+            <th>Arrival time</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.departure }}</td>
+            <td>{{ entity.arrival }}</td>
+            <td>{% if entity.timeDeparture %}{{ entity.timeDeparture|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.timeArrival %}{{ entity.timeArrival|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td class="js-trip-created">{{ entity.created|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<style>
+    .js-trip-created {
+        display: none;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        updateList();
+    });
+
+    function updateList()
+    {
+        $.ajax({
+            type: 'GET',
+            url: '/trip/last',
+            data: {'created' : $('.js-trip-block tbody tr:first .js-trip-created').html()},
+            success: function (data) {
+                if (data.code == 200) {
+                    var entities = data.entities;
+                    var i = 0;
+                    while (i < entities.length) {
+                        if ($('.js-trip-block tbody tr').length >= {{ list_length }}) {
+                            $('.js-trip-block tbody tr:last').remove();
+
+                        }
+                        $('.js-trip-block tbody').prepend(tripItemTemplate(entities[i]));
+                        i++;
+                    }
+                    setTimeout(function(){
+                        updateList()
+                    },5000);
+                }
+            }
+        });
+    }
+
+    function tripItemTemplate(trip)
+    {
+        return  '<tr>' +
+                    '<td>' + trip.departure + '</td>' +
+                    '<td>' + trip.arrival + '</td>' +
+                    '<td>' + date_and_time(trip.time_departure) + '</td>' +
+                    '<td>' + date_and_time(trip.time_arrival) + '</td>' +
+                    '<td class="js-trip-created">' + trip.created + '</td>' +
+                '</tr>';
+    }
+
+    function date_and_time(date_string)
+    {
+        var date = new Date(date_string);
+        var zp = function (val) {
+            return (val <= 9 ? '0' + val : '' + val);
+        }
+        var d = date.getDate();
+        var m = date.getMonth() + 1;
+        var y = date.getFullYear();
+        var h = date.getHours();
+        var min = date.getMinutes();
+        var s = date.getSeconds();
+        return '' + y + '-' + zp(m) + '-' + zp(d) + ' ' + zp(h) + ':' + zp(min) + ':' + zp(s);
+    }
+</script>

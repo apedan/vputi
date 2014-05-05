@@ -1,0 +1,65 @@
+{% extends "MainBundle::layout.html.twig" %}
+
+{% block body %}
+
+    <a href="{{ path('trip') }}" class="ui down green button">
+        <i class="level up icon"></i>
+        Back to the list
+    </a>
+
+    <h1>Trip</h1>
+
+    <table class="ui celled table">
+        <tbody>
+        <tr>
+            <td class="two wide"><b>Id</b></td>
+            <td>
+                {{ entity.id }}
+            </td>
+        </tr>
+        <tr>
+            <td><b>Departure</b></td>
+            <td>
+                {{ entity.departure }}
+            </td>
+        </tr>
+        <tr>
+            <td><b>Arrival</b></td>
+            <td>
+                {{ entity.arrival }}
+            </td>
+        </tr>
+        <tr>
+            <td><b>Departure time</b></td>
+            <td>
+                {{ entity.timeDeparture|date('Y-m-d H:i:s') }}
+            </td>
+        </tr>
+        <tr>
+            <td><b>Arrival time</b></td>
+            <td>
+                {{ entity.timeArrival|date('Y-m-d H:i:s') }}
+            </td>
+        </tr>
+        <tr>
+            <td><b>Description</b></td>
+            <td>
+                {{ entity.description }}
+            </td>
+        </tr>
+        <tr>
+            <td><b>Count</b></td>
+            <td>
+                {{ entity.count }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('trip_edit', { 'id': entity.id }) }}" class="ui labeled icon button teal">
+        <i class="edit icon"></i>
+        Edit
+    </a>
+    {{ form(delete_form) }}
+
+{% endblock %}

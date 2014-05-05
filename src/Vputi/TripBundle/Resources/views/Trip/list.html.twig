@@ -1,0 +1,37 @@
+<h1>Trip list</h1>
+
+<table class="ui table segment">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Departure time</th>
+            <th>Arrival time</th>
+            <th>Description</th>
+            <th>Count</th>
+            <th>Crated</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.id }}</td>
+            <td>{{ entity.departure }}</td>
+            <td>{{ entity.arrival }}</td>
+            <td>{% if entity.timeDeparture %}{{ entity.timeDeparture|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.timeArrival %}{{ entity.timeArrival|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.count }}</td>
+            <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+            <td>
+                <div class="2 fluid ui icon buttons green">
+                    <a href="{{ path('trip_show', { 'id': entity.id }) }}" class="ui button"><i class="info icon"></i></a>
+                    <a href="{{ path('trip_edit', { 'id': entity.id }) }}" class="ui button"><i class="edit icon"></i></a>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

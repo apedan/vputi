@@ -22,10 +22,12 @@ class AppKernel extends Kernel
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new Sonata\jQueryBundle\SonatajQueryBundle(),
 
             new Vputi\UserBundle\UserBundle(),
             new Vputi\EventBundle\EventBundle(),
             new Vputi\MainBundle\MainBundle(),
+            new Vputi\TripBundle\TripBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

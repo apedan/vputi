@@ -1,6 +1,6 @@
 <?php
 
-namespace Vputi\EventBundle\Dto;
+namespace Vputi\MainBundle;
 
 function getClosure($object)
 {

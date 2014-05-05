@@ -1,3 +1,7 @@
+trip:
+    resource: "@TripBundle/Resources/config/routing.yml"
+    prefix:   /
+
 main:
     resource: "@MainBundle/Resources/config/routing.yml"
     prefix:   /
@@ -13,7 +17,7 @@ event:
 
 home:
     path: /{_locale}
-    defaults: { _controller: UserBundle:Default:index, _locale: ru}
+    defaults: { _controller: MainBundle:Main:home, _locale: ru}
     requirements:
         _locale:  en|ru|ua
 

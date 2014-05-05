@@ -1,0 +1,44 @@
+trip:
+    pattern:  /
+    defaults: { _controller: "TripBundle:Trip:index" }
+
+trip_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TripBundle:Trip:show" }
+
+trip_new:
+    pattern:  /new
+    defaults: { _controller: "TripBundle:Trip:new" }
+
+trip_create:
+    pattern:  /create
+    defaults: { _controller: "TripBundle:Trip:create" }
+    requirements: { _method: post }
+
+trip_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TripBundle:Trip:edit" }
+
+trip_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TripBundle:Trip:update" }
+    requirements: { _method: post|put }
+
+trip_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TripBundle:Trip:delete" }
+    requirements: { _method: post|delete }
+
+trip_search:
+    pattern:  /search
+    defaults: { _controller: "TripBundle:Trip:search" }
+
+trip_list:
+    pattern:  /list
+    defaults: { _controller: "TripBundle:Trip:list" }
+
+trip_last:
+    pattern:  /last
+    defaults: { _controller: "TripBundle:Trip:last", _format: json }
+    requirements:
+        _method: GET

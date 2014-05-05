@@ -24,6 +24,12 @@
             <tag name="form.type" alias="vputi_driver" />
         </service>
 
+        <service id="user.registration" class="Vputi\UserBundle\EventListener\RegistrationListener">
+            <tag name="kernel.event_subscriber"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="security.context"/>
+        </service>
+
     </services>
 
 </container>

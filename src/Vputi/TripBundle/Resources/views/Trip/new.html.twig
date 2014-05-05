@@ -1,0 +1,14 @@
+{% extends "MainBundle::layout.html.twig" %}
+
+{% block body %}
+    <a href="{{ path('trip') }}" class="ui down green button">
+        <i class="level up icon"></i>
+        Back to the list
+    </a>
+
+    <h1>Trip creation</h1>
+
+    <div class="ui form segment">
+        {{ form(form, {'attr': {'novalidate': 'novalidate'} }) }}
+    </div>
+{% endblock %}

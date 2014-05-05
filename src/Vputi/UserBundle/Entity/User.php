@@ -5,6 +5,7 @@ namespace Vputi\UserBundle\Entity;
 use Vputi\UserBundle\Entity\MainUser as MainUser;
 use Vputi\UserBundle\Entity\Profile as Profile;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -16,7 +17,9 @@ class User extends MainUser
     /**
      * @var Driver
      *
-     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user")
+     * @Assert\Valid()
+     *
+     * @ORM\OneToOne(targetEntity="Profile", mappedBy="user", cascade={"persist"})
      */
     protected $profile;
 

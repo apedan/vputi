@@ -3,6 +3,7 @@
 namespace Vputi\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as FosUser;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +37,8 @@ abstract class MainUser extends FosUser
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="phone", type="string", length=15)
      */

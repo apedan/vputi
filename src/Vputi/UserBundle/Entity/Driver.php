@@ -4,6 +4,7 @@ namespace Vputi\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vputi\UserBundle\Entity\Profile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Driver
@@ -31,6 +32,8 @@ class Driver
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="licenseCategory", type="string", length=8)
      */

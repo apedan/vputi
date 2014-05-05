@@ -1,0 +1,18 @@
+fos_user_security_login:
+    path:     /{_locale}/login
+    defaults: { _controller: FOSUserBundle:Security:login, _locate: en }
+    requirements:
+        _locale: en|ru|ua
+
+fos_user_security_check:
+    path:     /{_locale}/login_check
+    defaults: { _controller: FOSUserBundle:Security:check }
+    requirements:
+        _locale: en|ru|ua
+        _method: POST
+
+fos_user_security_logout:
+    path:     /{_locale}/logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+    requirements:
+        _locale: en|ru|ua

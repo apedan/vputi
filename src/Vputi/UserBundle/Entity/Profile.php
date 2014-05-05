@@ -6,6 +6,7 @@ use Vputi\UserBundle\Entity\Driver as Driver;
 use Doctrine\ORM\Mapping as ORM;
 use Vputi\UserBundle\Entity\User;
 use Vputi\UserBundle\Entity\Company;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Profile
@@ -26,6 +27,8 @@ class Profile
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="surname", type="string", length=60)
      */
     protected $surname;
@@ -33,12 +36,16 @@ class Profile
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="first_name", type="string", length=60)
      */
     protected $firstName;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="last_name", type="string", length=60)
      */
@@ -60,6 +67,8 @@ class Profile
 
     /**
      * @var Driver
+     *
+     * @Assert\Valid()
      *
      * @ORM\OneToOne(targetEntity="Driver", inversedBy="profile", cascade={"persist"})
      * @ORM\JoinColumn(name="driver_id", referencedColumnName="id")

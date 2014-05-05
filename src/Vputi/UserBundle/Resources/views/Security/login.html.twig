@@ -1,24 +1,45 @@
-{% extends "UserBundle::layout.html.twig" %}
-
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% extends "MainBundle::layout.html.twig" %}
 {% block body %}
+
 {% if error %}
-    <div>{{ error|trans }}</div>
+    <div class="ui error message">
+        {{ error|trans }}
+    </div>
 {% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
+<form autocomplete="off" action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-    <br/>
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
-    <br/>
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-    <br/>
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    <div class="field">
+        <label>{{ 'security.login.username'|trans }}</label>
+        <div class="ui left labeled icon input">
+            <input id="username" name="_username" type="text" placeholder="{{ 'security.login.username'|trans }}">
+            <i class="user icon"></i>
+            <div class="ui corner label">
+                <i class="asterisk icon"></i>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>{{ 'security.login.password'|trans }}</label>
+        <div class="ui left labeled icon input">
+            <input type="password" id="password" name="_password" placeholder="{{ 'security.login.password'|trans }}">
+            <i class="lock icon"></i>
+            <div class="ui corner label">
+                <i class="asterisk icon"></i>
+            </div>
+        </div>
+    </div>
+    <div class="ui checkbox">
+        <input type="checkbox" id="remember_me" name="_remember_me">
+        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+    </div>
+    <div class="field">
+        <input class="ui blue submit button" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    </div>
+
 </form>
+
 {% endblock body %}

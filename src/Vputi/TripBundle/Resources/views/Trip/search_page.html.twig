@@ -1,0 +1,12 @@
+{% extends "MainBundle::layout.html.twig" %}
+{% block body %}
+
+    <div class="ui form segment {% if error %} {{ 'error' }} {% endif %}">
+        {% include 'TripBundle:Trip:search.html.twig' %}
+    </div>
+
+    <div class="ui segment">
+        {% include 'TripBundle:Trip:list.html.twig' %}
+    </div>
+
+{% endblock body %}

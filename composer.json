@@ -32,7 +32,9 @@
         "symfony/css-selector": "2.1.9",
         "behat/mink-extension": "1.2.0",
         "behat/mink-sahi-driver": "*",
-        "behat/mink-browserkit-driver": "*"
+        "behat/mink-browserkit-driver": "*",
+
+        "sonata-project/jquery-bundle": "1.10.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

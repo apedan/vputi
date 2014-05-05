@@ -12,6 +12,9 @@ class RegistrationFormType extends BaseType
 
         $builder->add('phone');
         $builder->add('profile', 'vputi_custom_profile');
+        $builder->add('registration.submit', 'submit', array(
+            'attr' => array('class' => 'ui green button')
+        ));
     }
 
     public function getName()

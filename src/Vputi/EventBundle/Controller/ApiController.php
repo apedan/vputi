@@ -6,7 +6,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\ClassBasedInterface;
 use Vputi\EventBundle\Dto\Event as EventDto;
-use Vputi\EventBundle\Dto\DtoService as DtoService;
+use Vputi\MainBundle\DtoService as DtoService;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Vputi\EventBundle\Form\Type\EventFormType;
 

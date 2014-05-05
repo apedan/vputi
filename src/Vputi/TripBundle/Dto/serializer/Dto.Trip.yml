@@ -1,0 +1,15 @@
+Vputi\TripBundle\Dto\Trip:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        departure:
+            expose: true
+        arrival:
+            expose: true
+        timeDeparture:
+            expose: true
+        timeArrival:
+            expose: true
+        created:
+            expose: true

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="vputi_trip.trip.form.type" class="Vputi\TripBundle\Form\Type\TripFormType">
+            <tag name="form.type" alias="vputi_trip" />
+        </service>
+
+        <service id="trip.repository" class="Vputi\TripBundle\Entity\TripRepository" factory-service="doctrine.orm.entity_manager" factory-method="getRepository">
+            <argument>Vputi\TripBundle\Entity\Trip</argument>
+        </service>
+
+        <service id="tripService" class="Vputi\TripBundle\TripService">
+            <argument type="service" id="trip.repository"/>
+        </service>
+
+    </services>
+
+</container>

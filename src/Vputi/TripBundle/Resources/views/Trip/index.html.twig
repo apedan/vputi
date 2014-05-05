@@ -1,0 +1,6 @@
+{% extends "MainBundle::layout.html.twig" %}
+
+{% block body %}
+    {% include 'TripBundle:Trip:list.html.twig' %}
+    <a href="{{ path('trip_new') }}" class="ui blue labeled icon button"><i class="rocket icon"></i> Create a new trip</a>
+{% endblock %}
